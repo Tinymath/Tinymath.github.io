@@ -1,0 +1,225 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Game Loader</title>
+  <style>
+    body { background:#111; color:#fff; font-family:Arial; text-align:center; }
+    h1 { margin-top:20px; }
+    button {
+      padding:10px 20px; margin:10px; font-size:16px;
+      background:#1e90ff; border:none; border-radius:5px; color:white; cursor:pointer;
+    }
+    button:hover { background:#0f6ed6; }
+  </style>
+</head>
+<body>
+
+<h1>Tinymath</h1>
+
+<div id="buttons"></div>
+<script>
+  // ⭐ BUTTON MAKER WITH OPTIONAL IMAGES ⭐
+  function add(name, url, img = null) {
+    const wrapper = document.createElement("div");
+    wrapper.style.display = "inline-block";
+    wrapper.style.margin = "15px";
+    wrapper.style.textAlign = "center";
+
+    // If user provides an image, show it
+    if (img) {
+      const image = document.createElement("img");
+      image.src = img;
+      image.style.width = "150px";
+      image.style.height = "150px";
+      image.style.objectFit = "cover";
+      image.style.borderRadius = "10px";
+      image.style.cursor = "pointer";
+      image.style.display = "block";
+      image.style.marginBottom = "8px";
+      image.onclick = () => loadGame(url);
+      wrapper.appendChild(image);
+    }
+
+    // Button
+    const button = document.createElement("button");
+    button.textContent = name;
+    button.onclick = () => loadGame(url);
+    wrapper.appendChild(button);
+
+    document.getElementById("buttons").appendChild(wrapper);
+  }
+
+  // ⭐ LOAD GAME WITHOUT BREAKING ANYTHING ⭐
+  function loadGame(url) {
+    fetch(url)
+      .then(r => r.text())
+      .then(html => {
+        const header = `
+          <div style="
+            width:100%;
+            padding:15px;
+            background:#222;
+            color:white;
+            font-size:24px;
+            text-align:center;
+            position:fixed;
+            top:0;
+            left:0;
+            z-index:9999;
+          ">
+            ⭐ Tiny Math ⭐
+            <button onclick="document.documentElement.requestFullscreen()" 
+              style="
+                float:right;
+                margin-right:20px;
+                padding:8px 15px;
+                background:#1e90ff;
+                border:none;
+                border-radius:5px;
+                color:white;
+                cursor:pointer;
+              ">
+              Fullscreen
+            </button>
+          </div>
+          <div style="height:70px;"></div>
+        `;
+
+        // Write header + game HTML exactly like your original script
+        document.open();
+        document.write(header + html);
+        document.close();
+      });
+  }
+
+   add("Search",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/Scramjet/index.html",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSG9rdr60XAyZweqcfLA2wWpRyRsS4IErjATUXkZ8wzbhRlAVE:https://help.figma.com/hc/article_attachments/25258750638999&s");
+      
+  add("1v1.lol",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/1v1.lol/1v1.lol.html",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/1v1.lol/image.png");
+
+  add("2048",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/2048/index.html",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/2048/image.png");
+
+  add("Baldi Basics",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/Baldi%20basics/index.html",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/Baldi%20basics/image.png");
+      
+      add("Baseball Bros",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/Baseball%20Bros/index.html",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/Baseball%20Bros/image.png");
+      
+      add("Basket random",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/Basket%20random/index.html",
+      "https://th.bing.com/th/id/OIP.hoTOxtCHHkYByS0KvaBQNgAAAA?w=108&h=108&c=1&bgcl=9f6f23&r=0&o=7&dpr=1.3&pid=ImgRC&rm=3");
+       
+      add("Boxing random",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/Boxing%20random/index.html",
+      "https://th.bing.com/th/id/OIP.phSj19tRWXMQnoeQDKjs2gAAAA?w=128&h=108&c=7&qlt=90&bgcl=6c7f6e&r=0&o=6&dpr=1.3&pid=13.1");
+      
+      add("BTD",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/BTD/index.html",
+      "https://th.bing.com/th/id/OIP.1Wil_jitmqYPzk9EFANMoAAAAA?w=108&h=108&c=1&bgcl=d8a948&r=0&o=7&dpr=1.3&pid=ImgRC&rm=3");
+      
+      add("BTD2",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/BTD%202/index.html",
+      "https://th.bing.com/th/id/OIP.vi0M6YxijIN7kf1ZKH5A6QHaEk?w=108&h=108&c=1&bgcl=9ec118&r=0&o=7&dpr=1.3&pid=ImgRC&rm=3");
+      
+      add("BTD3",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/BTD%203/index.html",
+      "https://th.bing.com/th/id/OIP.vi0M6YxijIN7kf1ZKH5A6QHaEk?w=108&h=108&c=1&bgcl=9ec118&r=0&o=7&dpr=1.3&pid=ImgRC&rm=3");
+      
+      add("BTD4",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/BTD%203/index.html",
+      "https://th.bing.com/th/id/OIP.vi0M6YxijIN7kf1ZKH5A6QHaEk?w=108&h=108&c=1&bgcl=9ec118&r=0&o=7&dpr=1.3&pid=ImgRC&rm=3");
+      
+      add("Cookie clicker",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/Cookie%20Clicker/index.html",
+      "https://th.bing.com/th/id/OSK.rAIEjutYW25Dw4vY0SLcz-7bZ4BW-zzFiuqvXiu-Hqw?w=50&h=50&c=12&o=6&dpr=1.3&pid=SANGAM");
+      
+      add("Drift Boss",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/Drift%20boss/index.html",
+      "https://th.bing.com/th/id/OIP.8TYulLLsPB9Mg-xt477LoQHaHa?w=108&h=108&c=1&bgcl=e55e49&r=0&o=7&dpr=1.3&pid=ImgRC&rm=3");
+      
+      add("Drive mad",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/Drive%20mad/index.html",
+      "https://th.bing.com/th/id/OIP.A59clITX9HQPunpR3Rj9uAHaD4?w=108&h=108&c=1&bgcl=f04aef&r=0&o=7&dpr=1.3&pid=ImgRC&rm=3");
+      
+      add("Escape road",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/escape%20road/index.html",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0twQHQ51FKenGsSWX_wEfPj76J7l126T_DvOgXK5-Bh1MjLy2:https://sites.miamioh.edu/student-healthy-life/files/2025/08/The-Thrill-of-Urban-Escapes-What-Makes-Escape-Road-City-Unique.png&s");
+      
+      add("Football bros",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/Football%20bros/index.html",
+      "https://th.bing.com/th/id/OIP.WG3oBvNGFy3eka3Y8ASE_wHaDn?w=299&h=170&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3");
+      
+      add("Getaway shootout",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/Getaway%20Shootout/index.html",
+      "https://th.bing.com/th/id/OIP.N8GrdbsZL3FrijmX79u9-wHaD4?w=343&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3");
+      
+      add("OvO",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/OvO/index.html",
+      "https://th.bing.com/th/id/OIP.HitU3VU9DoKsBFFL6jMVbwHaEK?w=276&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3");
+      
+      add("OvO 2",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/OvO%202/index.html",
+      "https://th.bing.com/th/id/OIP.a-aBCQJiWnbBhcBlWToaywAAAA?w=50&h=50&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3");
+      
+      add("Paper Io 2",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/Paper%20io%202/index.html",
+      "https://th.bing.com/th/id/OIP.TFskqsl07yUw8jiT3v3H-wHaDL?w=303&h=150&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3");
+      
+      add("Poly track",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/Poly%20track/index.html",
+      "https://th.bing.com/th/id/OIP._pF-9I8ft26796E10rVTIgHaHa?w=172&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3");
+      
+      add("Ragdoll Archers",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/Ragdoll%20archers/index.html",
+      "https://th.bing.com/th/id/OIP.ZiavEx7-qCewFK4tncsW9QHaHa?w=167&h=150&c=6&o=7&dpr=1.3&pid=1.7&rm=3");
+      
+       add("Ragdoll Hit",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/Ragdoll%20hit/index.html",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4afkSLLWFnil99IjpK4lUJSYAfzPYAsOCH2ssbOLCy9r5ifSEMeXcaLONhxti-1fEO65B6uVTvpbpDV9-NFDopBw-JlhUqEI6dwMsuVrsFQ&s=10");
+      
+      add("Retro Bowl",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/Retro%20bowl/index.html",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyPT41vNPwhB0PME8b7h8q2hGT-a_gJgaB5digL4GMCyWA1T-HWX2f2TuLKpIyHF-uEBgLlKMEvLEm7O7uI2mMhcfHwf_5Z1W4zZ-Toqs-Kw&s=10");
+      
+      add("Slope",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/Slope/index.html",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS84JAyAQdSxPxDblAVwEQRO4BdnrbVqAO-xqJumZpTgxnLhU:https://store-images.s-microsoft.com/image/apps.2222.14240717621077847.23a863e6-d42c-4227-b7f8-781b49b24a7a.5ab470fc-2715-4e0f-a2c2-204858895c40&s");
+      
+      add("Snow rider",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/Snow%20rider/index.html",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT67pIrfhMSopm_8_YEqXB4ir2nidlg6bIsLLaYYAPslf55-Wo:https://i.ytimg.com/vi/DDj9aMXcBg0/hq720.jpg%3Fsqp%3D-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD%26rs%3DAOn4CLCJxltvc3cK947yYx8FTa7rfiZXAg&s");
+      
+      add("Stickman Duel",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/Stickman%20duel/index.html",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfOkLaXFechksMyHx43DiS3KOgxzZsIjGZR2ABAcvK8dwmvrU:https://play-lh.googleusercontent.com/fJ2OJd3KX_xTRFHrs-JS138Mgx3ARvfT0xWT0nZUaQUZRdbyTpuKAphW48GPp_VEqw%3Dw526-h296-rw&s");
+      
+      add("SM63",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/Super%20mario%2063/index.html",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3S7zV4sEQ4stA1hk_b91-LJvyfM6ReRTfd1y6e2EOtpy2f4sP:https://i0.wp.com/datahorde.org/wp-content/uploads/2020/12/sm63mod2.gif%3Fresize%3D338%252C225%26ssl%3D1&s");
+      
+      add("SM64",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/Super%20mario%2064/index.html",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu3pH7wV03VRvTnt4KyIjjintLXiLfashcKy2lZMYDuks1DWA4:https://upload.wikimedia.org/wikipedia/commons/4/44/Super_Mario_64_logo.png&s");
+      
+      add("Survival Race",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/Survival%20race/index.html",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU93PSy5eSRWwgnulIApY47YKxHb_FiZr6eYfVyN_JQ8kK3ug:https://i.ytimg.com/vi/EaFxVgBYKPc/hq720.jpg%3Fsqp%3D-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD%26rs%3DAOn4CLA3vmilxsofew1NTYLogoYAbtNIuQ&s");
+      
+      add("Tag",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/Tag/index.html",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRd2W53Ho0XRZlmiN3PfWZaTG6qD5nQkcqY_uJvVe1vbXSpN4:https://img.tapimg.net/market/images/e813e28be40ab49926cc20cd2034a488.png%3FimageView2/2/w/720/h/720/q/80/format/jpg/interlace/1/ignore-error/1%26t%3D1&s");
+      
+      add("Volley random",
+      "https://raw.githubusercontent.com/cloverdust/Tiny-math/refs/heads/main/Volley%20randomer/index.html",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmm__iz6v7vqAdw7kg2x9zeAp9ev7yCVNg4FsT2dqlSIs2V2oV8LCJIcVkh1Eqa_Q_kkfqe2FHix5Q_--LwnNlJWWbPZTR4CwctPXfG29r&s=10");
+</script>
